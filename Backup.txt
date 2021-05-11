@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect('mongodb+srv://admin_kkr:qwerty123@cluster0.ad4k6.mongodb.net/todolistDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://admin_kkr:qwerty123@cluster0.ad4k6.mongodb.net/todolistDB?retryWrites=true&w=majority', {userNewUrlParser: true, useUnifiedTopology: true});
 
 const itemsSchema = {
   name: String
@@ -131,12 +131,10 @@ app.post('/delete', (req, res) => {
   }
 });
 
+app.get("/about", function(req, res){
+  res.render("about");
+});
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-
-app.listen(port, function() {
-  console.log("Server has been started succesfully.");
+app.listen(3000, function() {
+  console.log("Server started on port 3000");
 });
